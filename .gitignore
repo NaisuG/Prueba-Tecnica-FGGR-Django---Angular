@@ -3,16 +3,12 @@ venv/
 __pycache__/
 *.pyc
 
-# Base de datos (opcional si es local)
 db.sqlite3
 
-# Archivos de entorno (claves secretas)
 .env
 
-# Angular (para cuando lo instalemos)
 node_modules/
 .angular/
 dist/
 
-# Medios (Imágenes subidas)
 media/
