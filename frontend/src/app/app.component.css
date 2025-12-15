@@ -1,0 +1,187 @@
+/* === CONTENEDOR PRINCIPAL === */
+.container {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 20px;
+  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  color: #333;
+}
+
+h1 { text-align: center; color: #2c3e50; margin-bottom: 30px; }
+h2 { color: #34495e; border-bottom: 2px solid #eee; padding-bottom: 10px; margin-bottom: 20px; font-size: 1.5rem; }
+
+/* === TARJETAS GENERALES === */
+.card {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+  border: 1px solid #e1e1e1;
+  padding: 25px;
+  margin-bottom: 30px;
+}
+
+/* === FORMULARIO === */
+.form-section { background-color: #fcfcfc; }
+
+.form-group { margin-bottom: 20px; }
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: #555;
+}
+
+/* Estilo para TODOS los inputs (Texto, Fecha, Número, Moneda) */
+.form-group input[type="text"],
+.form-group input[type="date"],
+.form-group input[type="number"],
+.input-moneda {
+  width: 100%;             /* Ocupa todo el ancho disponible */
+  padding: 10px 15px;      /* Espacio interno cómodo */
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 16px;
+  box-sizing: border-box;  /* Evita que el padding rompa el ancho */
+  transition: border-color 0.3s;
+}
+
+.form-group input:focus {
+  border-color: #007bff;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(0,123,255,0.1);
+}
+
+/* FILAS Y COLUMNAS (Para Valor y Moneda juntos) */
+.row {
+  display: flex;
+  gap: 20px; /* Espacio entre columnas */
+  align-items: flex-start;
+}
+
+.col { flex: 1; } /* El valor ocupa el espacio restante */
+.col-small { flex: 0 0 150px; } /* La moneda tiene ancho fijo */
+
+/* MENSAJES DE ERROR */
+.req { color: #dc3545; }
+.error-border { border-color: #dc3545 !important; background-color: #fff8f8; }
+.error-msg { color: #dc3545; font-size: 0.85em; margin-top: 5px; display: block; }
+
+/* BOTÓN GUARDAR */
+.btn-save {
+  width: 100%;
+  padding: 12px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  margin-top: 10px;
+}
+.btn-save:hover { background-color: #0056b3; }
+.btn-save:disabled { background-color: #ccc; cursor: not-allowed; }
+
+/* === LISTA DE PRODUCTOS (GRID) === */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Tarjetas responsivas */
+  gap: 25px;
+}
+
+.product-card {
+  padding: 0; /* Quitamos padding para que la imagen llegue al borde */
+  overflow: hidden; /* IMPORTANTE: Corta lo que sobre */
+  transition: transform 0.2s, box-shadow 0.2s;
+  position: relative;
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+/* === IMÁGENES DE PRODUCTOS (La solución a tu problema) === */
+.product-card img {
+  width: 100%;        /* Ancho total de la tarjeta */
+  height: 180px;      /* Alto fijo para todas */
+  object-fit: cover;  /* Recorta la imagen sin deformarla */
+  display: block;
+}
+
+.no-image {
+  width: 100%;
+  height: 180px;
+  background-color: #f0f2f5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #a0a0a0;
+  font-weight: 500;
+}
+
+/* INFORMACIÓN DE LA TARJETA */
+.info { padding: 15px; text-align: center; }
+.info h3 { margin: 0 0 5px; font-size: 1.1rem; color: #333; }
+.date { color: #777; font-size: 0.9rem; margin-bottom: 10px; }
+.price { color: #27ae60; font-weight: bold; font-size: 1.3rem; margin: 0; }
+
+/* BOTÓN ELIMINAR (BASURA) */
+.btn-delete {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: rgba(255, 255, 255, 0.9);
+  border: none;
+  border-radius: 50%;
+  width: 35px;
+  height: 35px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  transition: all 0.2s;
+  z-index: 10;
+}
+.btn-delete:hover { background-color: #ffebee; color: #dc3545; transform: scale(1.1); }
+
+/* === MODAL (POPUP) === */
+.modal-overlay {
+  position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+  background: rgba(0,0,0,0.5);
+  backdrop-filter: blur(2px); /* Efecto borroso de fondo */
+  display: flex; justify-content: center; align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 500px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+  animation: slideDown 0.3s ease-out;
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.warning-title { color: #e67e22; margin-top: 0; border-bottom: 1px solid #eee; padding-bottom: 15px; }
+.duplicate-info { background: #fff8e1; padding: 15px; border-radius: 8px; margin: 20px 0; border-left: 5px solid #ffc107; }
+.duplicate-info ul { list-style: none; padding: 0; margin: 0; }
+.duplicate-info li { margin-bottom: 5px; }
+
+.modal-actions { display: flex; flex-direction: column; gap: 12px; margin-top: 25px; }
+.modal-actions button { padding: 12px; border: none; border-radius: 6px; cursor: pointer; font-weight: 600; font-size: 1rem; transition: opacity 0.2s; }
+.modal-actions button:hover { opacity: 0.9; }
+
+.btn-cancel { background: #e0e0e0; color: #333; }
+.btn-add { background: #3498db; color: white; }
+.btn-replace { background: #e74c3c; color: white; }
